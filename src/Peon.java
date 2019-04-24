@@ -29,7 +29,7 @@ public class Peon extends Piezas {
 				System.out.println("EL PEÓN NO PUEDE POSICIONARSE TAN ATRÁS");
 			} 
 		}
-
+/*
 		if (y == 2) {
 			y[1] = y+2;
 			x[1] = x;
@@ -46,5 +46,7 @@ public class Peon extends Piezas {
 			System.out.println("Movimientos Posibles: " +x[2]+" "+y[2]);	
 		}
 
-	}	
+	}
+	*/
+	}
 }
