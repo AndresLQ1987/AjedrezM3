@@ -98,4 +98,5 @@ public class Tablero {
 		boolean [][] result = tablero[x][y].movimiento(x, y,tablero[x][y].getColor());
 		return result;
 	}
+	
 }
