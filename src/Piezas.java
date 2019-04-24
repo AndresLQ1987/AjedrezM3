@@ -50,8 +50,9 @@ public class Piezas {
    }
    
    //Método que heredará cada pieza para devolver los movimientos que realizan
-   public void movimiento(int x, int y, String color) {
-	   
+   public boolean[][] movimiento(int x, int y, String color) {
+	   boolean a[][]=new boolean[8][8];
+	   return a;
    }
 }
 	
