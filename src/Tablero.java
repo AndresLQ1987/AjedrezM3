@@ -70,7 +70,7 @@ public class Tablero {
 		for(int y = 0 ; y < numCasillas ; y++) {
 			System.out.print((7-y)+" ");
 			for(int x = 0 ; x < numCasillas ; x++) {
-				System.out.print("|"+tablero[x][y]+" |");
+				System.out.print("|"+tablero[x][y].getNombre()+tablero[x][y].getColor()+" |");
 			}
 			System.out.println("\n  ----------------------------------------");
 		}
@@ -98,5 +98,4 @@ public class Tablero {
 		boolean [][] result = tablero[x][y].movimiento(x, y,tablero[x][y].getColor());
 		return result;
 	}
-	
 }
