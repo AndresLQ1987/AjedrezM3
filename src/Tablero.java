@@ -21,38 +21,44 @@ public class Tablero {
 		tablero = new Piezas[numCasillas][numCasillas];
 		for(int y = 0 ; y < numCasillas ; y++) {
 			for(int x = 0 ; x < numCasillas ; x++) {
-				if(y == 1 || y == 6) { //Este if coloca los peones
+				if(y == 1 || y == 6) { 				
+						// coloca los peones
 					if(y == 1) {
-						tablero[x][y] = new Piezas(x,y,"N","P"); //new Peon(x,y,"N","P"); // temporalmente son String cambiar por la pieza que toque una vez esten.
+						tablero[x][y] = new Piezas(x,y,"N","P");
 					}else {
-						tablero[x][y] = new Piezas(x,y,"B","P");//new Peon(x,y,"B","P");
+						tablero[x][y] = new Piezas(x,y,"B","P");
 					}
 				}else if(y == 0 || y == 7) {
-					if(x == 0 || x == 7) { // coloca las torres
+					if(x == 0 || x == 7) {			 
+						// coloca las torres
 						if(y == 0) {
 							tablero[x][y] = new Piezas(x,y,"N","T");
 						}else {
 							tablero[x][y] = new Piezas(x,y,"B","T");
 						}
-					}else if(x == 1 || x == 6) { // coloca los caballos
+					}else if(x == 1 || x == 6) { 	
+						// coloca los caballos
 						if(y == 0) {
 							tablero[x][y] = new Piezas(x,y,"N","C");
 						}else {
 							tablero[x][y] = new Piezas(x,y,"B","C");
 						}
-					}else if(x == 2 || x == 5) { // coloca los alfiles
+					}else if(x == 2 || x == 5) { 	
+						// coloca los alfiles
 						if(y == 0) {
 							tablero[x][y] = new Piezas(x,y,"N","A");
 						}else {
 							tablero[x][y] = new Piezas(x,y,"B","A");
 						}
-					}else if(x == 3) { // coloca la dama (o Reina)
+					}else if(x == 3) { 				
+						// coloca la dama (o Reina)
 						if(y == 0) {
 							tablero[x][y] = new Reina(x,y,"N","D");
 						}else {
 							tablero[x][y] = new Reina(x,y,"B","D");
 						}
-					}else { // coloca el rey
+					}else { 						
+						// coloca el rey
 						if(y == 0) {
 							tablero[x][y] = new Rey(x,y,"N","R");
 						}else {
@@ -60,6 +66,7 @@ public class Tablero {
 						}
 					}
 				}else {
+						// coloca los espacios libres
 					tablero[x][y] = new Piezas(x,y," "," ");
 				}
 			}
