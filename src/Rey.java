@@ -7,7 +7,6 @@
  *
  * Pieza Rey del tablero extiende de piezas y define sus movimientos.
  */
-
 public class Rey extends Piezas {
 	
 	/**

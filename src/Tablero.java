@@ -1,7 +1,10 @@
 /**
+ * Clase: Tablero
  * 
  * @author andres
- *
+ * @version 1.0
+ * @date 16/04/2019
+ * 
  * Clase Tablero inicia el tablero y pregunta a la pieza sus movimientos , ademas de permite mover la pieza dentro
  * del tablero.
  */
@@ -45,15 +48,15 @@ public class Tablero {
 						}
 					}else if(x == 3) { // coloca la dama (o Reina)
 						if(y == 0) {
-							tablero[x][y] = new Piezas(x,y,"N","D");
+							tablero[x][y] = new Reina(x,y,"N","D");
 						}else {
-							tablero[x][y] = new Piezas(x,y,"B","D");
+							tablero[x][y] = new Reina(x,y,"B","D");
 						}
 					}else { // coloca el rey
 						if(y == 0) {
-							tablero[x][y] = new Piezas(x,y,"N","R");
+							tablero[x][y] = new Rey(x,y,"N","R");
 						}else {
-							tablero[x][y] = new Piezas(x,y,"B","R");
+							tablero[x][y] = new Rey(x,y,"B","R");
 						}
 					}
 				}else {
@@ -84,9 +87,9 @@ public class Tablero {
 			System.out.print((7-y)+" ");
 			for(int x = 0 ; x < numCasillas ; x++) {
 				if(movs[x][y]) {
-					System.out.print("|"+tablero[x][y]+"o|");
+					System.out.print("|"+tablero[x][y].getNombre()+tablero[x][y].getColor()+"o|");
 				}else {
-					System.out.print("|"+tablero[x][y]+" |");
+					System.out.print("|"+tablero[x][y].getNombre()+tablero[x][y].getColor()+" |");
 				}
 			}
 			System.out.println("\n  ----------------------------------------");
