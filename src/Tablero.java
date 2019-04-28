@@ -35,9 +35,9 @@ public class Tablero {
 					if(x == 0 || x == 7) {			 
 						// coloca las torres
 						if (y == 0) {
-							tablero[x][y] = new Piezas(x, y, "N", "T");
+							tablero[x][y] = new Torre(x, y, "N", "T");
 						} else {
-							tablero[x][y] = new Piezas(x, y, "B", "T");
+							tablero[x][y] = new Torre(x, y, "B", "T");
 						}
 					} else if (x == 1 || x == 6) { 	
 						// coloca los caballos
@@ -127,5 +127,21 @@ public class Tablero {
 	public boolean[][] pregMovimientos(int x, int y) {
 		boolean [][] result = tablero[x][y].movimiento(x, y, tablero[x][y].getColor());
 		return result;
+	}
+	
+	/**
+	 * Metodo moverPieza
+	 * mueve la pieza en las posiciones x e y hasta la nueva posicion en newX y newY
+	 * 
+	 * @param x posicion x de la pieza a mover
+	 * @param y posicion y de la pieza a mover
+	 * @param newX posicion x de destino de la pieza a mover
+	 * @param newY posicion y de destino de la pieza a mover
+	 */
+	public void moverPieza(int x, int y, int newX, int newY) {
+		//TODO añadir despues no permitir movimientos ilegales.
+		
+		tablero[newX][newY] = tablero[x][y];
+		tablero[x][y] = new Piezas(x, y, " ", " ");
 	}
 }
