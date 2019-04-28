@@ -21,15 +21,12 @@ public class Torre extends Piezas {
         boolean[][] movimiento = new boolean[8][8]; //Se crea una matriz para la posición.
 
         for(int i=0; i<8; i=i+1) {
-            for(int j=0; j<8; j=j+1) {
-                if ((j == x) || (i == y)) {
+            for(int j=0; j<8; j++) {
+                if ((i == x) || (j == y)) {
                     movimiento[i][j] = true; //Verificación para determinar si el movimiento es correcto.
-
                 }else {
                     movimiento[i][j] = false; //Verificación para determinar si el movimiento es correcto.
-
                 }
-
             }
         }
         return movimiento;
