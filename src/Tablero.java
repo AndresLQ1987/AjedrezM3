@@ -27,9 +27,9 @@ public class Tablero {
 				if ((y == 1) || (y == 6)) { 				
 						// coloca los peones
 					if (y == 1) {
-						tablero[x][y] = new Piezas(x, y, "N", "P");
+						tablero[x][y] = new Peon(x, y, "N", "P");
 					} else {
-						tablero[x][y] = new Piezas(x, y, "B", "P");
+						tablero[x][y] = new Peon(x, y, "B", "P");
 					}
 				} else if ((y == 0) || (y == 7)) {
 					if(x == 0 || x == 7) {			 
@@ -42,9 +42,9 @@ public class Tablero {
 					} else if ((x == 1) || (x == 6)) { 	
 						// coloca los caballos
 						if (y == 0) {
-							tablero[x][y] = new Piezas(x, y, "N", "C");
+							tablero[x][y] = new Caballo(x, y, "N", "C");
 						} else {
-							tablero[x][y] = new Piezas(x, y, "B", "C");
+							tablero[x][y] = new Caballo(x, y, "B", "C");
 						}
 					} else if ((x == 2) || (x == 5)) { 	
 						// coloca los alfiles
@@ -93,7 +93,6 @@ public class Tablero {
 		}
 	}
 	
-	//funcion de dibujar sobrecargada para pintar los posibles movimientos
 	/**
 	 * Metodo dibujaTablero sobrecargado
 	 * Añade sobre la funcion dibujarTablero pinta los lugares a donde se puede mover una ficha
@@ -126,6 +125,7 @@ public class Tablero {
 	 */
 	public boolean[][] pregMovimientos(int x, int y) {
 		boolean [][] result = tablero[x][y].movimiento(x, y, tablero[x][y].getColor());
+		//boolean [][] correctResult = corregirMovimientos(x, y, result);
 		return result;
 	}
 	
@@ -145,7 +145,90 @@ public class Tablero {
 		tablero[x][y] = new Piezas(x, y, " ", " ");
 	}
 	
-	//private boolean[][] corregirMovimientos(int x, int y, boolean[][] movs, String turn) {
+	/**
+	 * Metodo corregirMovimientos
+	 * pasado los movimientos de la pieza revisa colisiones con piezas aliadas y/o enemigas
+	 * para quitar los movimientos que no son posibles dentro de los que puede realizar la pieza
+	 * 
+	 * @param x parametro x de la pieza a revisar
+	 * @param y parametro y de la pieza a revisar
+	 * @param movs los movimientos que puede realizar dicha ficha
+	 */
+	/*private boolean[][] corregirMovimientos(int x, int y, boolean[][] movs) {
+		System.out.println("corrigiendo");
+		switch (tablero[x][y].getNombre()) {
+		case "P":
+			
+			break;
+		case "T":
+			
+			break;
+		case "C":
+			
+			break;
+		case "A":
+			
+			break;
+		case "D":
+			movs = corregirArriba(x, y, movs);
+			break;
+		case "R":
+			
+			break;
+		default:
+			break;
+		}
 		
-	//}
+		return movs;
+	}*/
+	
+	/**
+	 * Metodo corregirArriba
+	 * comprueva las colisiones en vertical hacia arriba
+	 * 
+	 * @param x valor x de la pieza a revisar
+	 * @param y valor x de la pieza a revisar
+	 * @param movs la lista de movimientos posibles
+	 */
+	/*private boolean[][] corregirArriba(int x, int y, boolean[][] movs) {
+		System.out.println("corrigiendo arriba");
+		boolean colisionMismoColor = false;
+		boolean colisionOtroColor = false;
+		int contador = 0;
+		for (int i = 0; i < 8; i++) {
+			if (x+i < 8) {
+				if (tablero[x+i][y].getColor() == tablero[x][y].getColor()) {
+					colisionMismoColor = true;
+					movs[x+i][y] = false;
+				} else if ((tablero[x+i][y].getColor() == "B") && (tablero[x][y].getColor() == "N")) {
+					if (!colisionMismoColor) {
+						if (!colisionOtroColor) {
+							contador += 1;
+						} else {
+							movs[x+i][y] = false;
+						}
+					}
+				} else if ((tablero[x+i][y].getColor() == "N") && (tablero[x][y].getColor() == "B")) {
+					if (!colisionMismoColor) {
+						if (!colisionOtroColor) {
+							contador += 1;
+						} else {
+							movs[x+i][y] = false;
+						}
+					}
+				} else {
+					if (colisionMismoColor || colisionOtroColor) {
+						movs[x+i][y] = false;
+					}
+				}
+				if (colisionMismoColor) {
+					movs[x+i][y] = false;
+				}
+				if (contador >= 1) {
+					colisionOtroColor = true;
+				}
+			}
+		}
+		return movs;
+	}*/
 }

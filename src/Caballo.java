@@ -17,7 +17,8 @@ public class Caballo extends Piezas {
     /*
     *Aqui comenzamos la matriz el cual delimitara los bordes de los movimientos.
      */
-    public boolean[][] movimiento(int x, int y) {
+    @Override
+    public boolean[][] movimiento(int x, int y, String color) {
         boolean[][] movimiento = new boolean[8][8];
 
         /*
@@ -67,12 +68,10 @@ public class Caballo extends Piezas {
                 y = y - 1;
                 x = x - 2;
                 movimiento[y][x] = (x >= 0) && (x <= 7) && (y >= 0) && (y <= 7);
-            }
-
-            //Aqui es donde devolvemos la nueva posición.
-            return movimiento[y][x];
+            }      
         }
-
+      //Aqui es donde devolvemos la matriz de posiciones posibles.
+        return movimiento;
     }
 }
 
