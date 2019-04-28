@@ -21,32 +21,32 @@ public class Alfil extends Piezas {
 		}
 
 		for(int j = 0; j < 8; j++) {
-			int contX = x+j;
-			int contY = y+j;
+			int contX = x + j;
+			int contY = y + j;
 			if(contY <= 7 && contX <= 7) {
 				movimiento[contX][contY] = false;
 			}
 		}
-		
+
 		for(int j = 0; j < 8; j++) {
-			int contX = x-j;
-			int contY = y-j;
+			int contX = x - j;
+			int contY = y - j;
 			if(contY <= 7 && contX >= 0) {
 				movimiento[contX][contY] = true;
 			}
 		}
-		
+
 		for(int j = 0; j < 8; j++) {
-			int contX = x-j;
-			int contY = y+j;
+			int contX = x - j;
+			int contY = y + j;
 			if(contX >= 0  && contY <= 7) {
 				movimiento[contX][contY] = false;
 			}
 		}
-		
+
 		for(int j = 0; j < 8; j++) {
-			int contX = x+j;
-			int contY = y-j;
+			int contX = x + j;
+			int contY = y - j;
 			if(contX <= 7 && contY >= 0) {
 				movimiento[contX][contY] = false;
 			}
