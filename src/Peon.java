@@ -22,7 +22,7 @@ public class Peon extends Piezas {
 	public boolean[][] movimiento(int x, int y, String color) {
 		boolean[][] movimiento = new boolean[8][8];
 
-		for(int i = 0; i < 8; i= i - 2) {
+		for (int i = 0; i < 8; i= i - 2) {
 			for(int j = 0; j < 8; i = j + 2) {
 				if (j == x || i == y) {
 					movimiento[i][j] = true;
@@ -50,7 +50,7 @@ public class Peon extends Piezas {
 		
 		for (int j = 0; j < 8; j++) {
 			int contX = x-j;
-			int contY = y-j;
+			int contY = y+j;
 			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
 				movimiento[contX][contY] = true;
 			}
@@ -58,7 +58,7 @@ public class Peon extends Piezas {
 		
 		for (int j = 0; j < 8; j++) {
 			int contX = x+j;
-			int contY = y+j;
+			int contY = y-j;
 			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
 				movimiento[contX][contY] = false;
 			}
