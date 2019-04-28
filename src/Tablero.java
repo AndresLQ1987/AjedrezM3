@@ -144,4 +144,8 @@ public class Tablero {
 		tablero[newX][newY] = tablero[x][y];
 		tablero[x][y] = new Piezas(x, y, " ", " ");
 	}
+	
+	private boolean[][] corregirMovimientos(int x, int y, boolean[][] movs, String turn) {
+		
+	}
 }
