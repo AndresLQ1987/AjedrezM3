@@ -19,7 +19,7 @@ public class Reina extends Piezas {
 //Desarrollo los movimientos horizontales y verticales de la 'reina'.		
 		for(int i=0; i<8; i++) {
 			for(int j=0; j<8; j++) {
-				if (j == x || i == y) {
+				if (j == x && i == y) {
 					movimiento[i][j] = true;
 				}else {
 					movimiento[i][j] = false;
@@ -31,28 +31,28 @@ public class Reina extends Piezas {
 		for(int j= 0; j<8; j++) {
 			int contX = x+j;
 			int contY = y+j;
-			if((contX <= 7 && contX >= 0) || (contY <= 7 && contY >= 0)) {
+			if((contX <= 7 && contX >= 0) && (contY <= 7 && contY >= 0)) {
 				movimiento[contX][contY] = true;
 			}
 		}
 		for(int j= 0; j<8; j++) {
 			int contX = x-j;
 			int contY = y-j;
-			if((contX <= 7 && contX >= 0) || (contY <= 7 && contY >= 0)) {
+			if((contX <= 7 && contX >= 0) && (contY <= 7 && contY >= 0)) {
 				movimiento[contX][contY] = true;
 			}
 		}
 		for(int j = 0; j<8; j++) {
 			int contX = x-j;
 			int contY = y+j;
-			if((contX <= 7 && contX >= 0) || (contY <= 7 && contY >= 0)) {
+			if((contX <= 7 && contX >= 0) && (contY <= 7 && contY >= 0)) {
 				movimiento[contX][contY] = true;
 			}
 		}
 		for(int j = 0; j<8; j++) {
 			int contX = x+j;
 			int contY = y-j;
-			if((contX <= 7 && contX >= 0) || (contY <= 7 && contY >= 0)) {
+			if((contX <= 7 && contX >= 0) && (contY <= 7 && contY >= 0)) {
 				movimiento[contX][contY] = true;
 			}
 		}
