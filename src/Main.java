@@ -45,6 +45,7 @@ public class Main {
 			if (movimientoOPieza(newPos, piezaMovs)) {
 				tablero.moverPieza(initPos[0], initPos[1], newPos[0], newPos[1]);
 				tablero.dibujaTablero();
+				movimientoHecho = true;
 			}else {
 				piezaMovs = tablero.pregMovimientos(newPos[0], newPos[1]);
 				initPos = newPos;
