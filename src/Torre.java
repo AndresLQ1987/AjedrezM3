@@ -1,4 +1,4 @@
-public class torre extends Piezas {
+public class Torre extends Piezas {
 
     public torre(int x, int y, String color, String nombre) {
         super(x, y, color, nombre);
@@ -10,9 +10,19 @@ public class torre extends Piezas {
         int desdeY = movimiento_desdeY;
     }
 
+    for(int i=0; i<8; i++) {
+        for(int j=0; j<8; j++) {
+            if (j == x && i == y) {
+                movimiento[i][j] = true;
+            }else {
+                movimiento[i][j] = false;
+            }
+        }
+    }
     String ruta;
 
-    if(desdeY=0){
+
+
     //continuar desde aqui.
     }
 }
