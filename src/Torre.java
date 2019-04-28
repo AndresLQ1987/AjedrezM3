@@ -1,13 +1,17 @@
 /*
-Class que cae de piezas.
-Incluye bucle de verificación de posiciones para poder enseñar posibles movimientos.
-
- Mensión honorifica al bucle de la pieza "reina", la cual cogi, por ser mas eficiente
- dado que en un principio quería hacer una cadena de comprobación basada en IF's.
+*Class que cae de piezas.
+*Incluye bucle de verificación de posiciones para poder enseñar posibles movimientos.
+*
+ *Mensión honorifica al bucle de la pieza "reina", la cual cogi, por ser mas eficiente
+ *dado que en un principio quería hacer una cadena de comprobación basada en IF's.
+ *
+ * By Catriel, prestandose codigo de @author cf18christian.villegas de su pieza Reina.
  */
 public class Torre extends Piezas {
 
-    //Este es el constructor de la pieza Torre.
+    /*
+     *Aqui tenemos el constructor de la torre.
+     */
     public Torre (int x, int y, String color, String nombre) {
         super(x, y, color, nombre);
     }
