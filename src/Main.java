@@ -27,10 +27,17 @@ public class Main {
 		Tablero tablero = new Tablero();
 		tablero.dibujaTablero();
 		
+		//pregunta por la pieza a mover para mostrar sus movimientos
 		int[] initPos = preguntaPos("Introduce la posicion de la pieza(ej: 0 0): ");
 		System.out.println();
 		boolean[][] piezaMovs = tablero.pregMovimientos(initPos[0], initPos[1]);
 		tablero.dibujaTablero(piezaMovs);
+		
+		/*
+		 * pregunta por una segunda posicion y destinge si es un movimiento de la
+		 * primera pieza seleccionada o una segunda pieza, si es un movimiento mueve
+		 * la primera pieza
+		 */
 		
 		boolean movimientoHecho = false;
 		while (!movimientoHecho) {
@@ -44,6 +51,7 @@ public class Main {
 				tablero.dibujaTablero(piezaMovs);
 			}
 		}
+		
 	}
 	
 	/**
