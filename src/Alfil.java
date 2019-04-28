@@ -1,32 +1,61 @@
+/*
+L'alfil: 
+Quan es pinta per pantalla mostra una A i segons el seu color serà AB o AN. 
+Els possibles moviments d'un alfil: 
+Pot moure's en tots els sentits de la diagonal que ocupa. 
+*/
 public class Alfil extends Piezas {
 
 	public Alfil(int x, int y, String color, String nombre) {
 		super(x, y, color, nombre);
 	}
-	
-	public int[][] getmovimientos() {
-		int[][] movimiento = new int[8][2];
-		
-		for(int i = 1; i < 8; i++) {
-			movimiento[i-1][0] = getX()+(1*i);
-			movimiento[i-1][1] = getY()+(1*i);
+
+	@Override
+	public boolean[][] movimiento(int x, int y, String color) {
+		boolean[][] movimiento = new boolean[8][8];
+
+		for(int i = 0; i < 8; i++) {
+			for(int j = 0; j < 8; j++) {
+				if (j == x || i == y) {
+					movimiento[i][j] = true;
+				}else {
+					movimiento[i][j] = false;
+				}		
+			}	
+		}
+
+		for(int j = 0; j < 8; j++) {
+			int contX = x+j;
+			int contY = y+j;
+			if((contX <= 7 && contX >= 0) || (contY <= 7 && contY >= 0)) {
+				movimiento[contX][contY] = false;
+			}
 		}
 		
-		for(int i = 1; i < 8; i++) {
-			movimiento[i+6][0] = getX()-(1*i);
-			movimiento[i+6][1] = getY()+(1*i);
+		for(int j = 0; j < 8; j++) {
+			int contX = x-j;
+			int contY = y-j;
+			if((contX <= 7 && contX >= 0) || (contY <= 7 && contY >= 0)) {
+				movimiento[contX][contY] = false;
+			}
 		}
 		
-		for(int i = 1; i < 8; i++) {
-			movimiento[i+13][0] = getX()+(1*i);
-			movimiento[i+13][1] = getY()-(1*i);
+		for(int j = 0; j < 8; j++) {
+			int contX = x-j;
+			int contY = y+j;
+			if((contX <= 7 && contX >= 0) || (contY <= 7 && contY >= 0)) {
+				movimiento[contX][contY] = false;
+			}
 		}
 		
-		for(int i = 1; i < 8; i++) {
-			movimiento[i+20][0] = getX()-(1*i);
-			movimiento[i+20][1] = getY()-(1*i);
+		for(int j = 0; j < 8; j++) {
+			int contX = x+j;
+			int contY = y-j;
+			if((contX <= 7 && contX >= 0) || (contY <= 7 && contY >= 0)) {
+				movimiento[contX][contY] = false;
+			}
 		}
-		
+
 		return movimiento;
-	}
+	}	 
 }

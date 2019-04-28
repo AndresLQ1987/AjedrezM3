@@ -17,36 +17,68 @@ public class Peon extends Piezas {
 	public Peon (int x, int y, String color, String nombre) {
 		super(x, y, color, nombre);
 	}
+	
+	@Override
+	public boolean[][] movimiento(int x, int y, String color) {
+		boolean[][] movimiento = new boolean[8][8];
 
-	public void movimiento () {
-		int x = getX();
-		int y = getY();
-
-		if (y == 0) {
-			System.out.println("NO HAY MOVIMIENTOS");
-		} else {
-			if (y > 5) {
-				System.out.println("EL PEÓN NO PUEDE POSICIONARSE TAN ATRÁS");
-			} 
+		for(int i = 0; i < 8; i++) {
+			for(int j = 0; j < 8; j++) {
+				if (j == x || i == y) {
+					movimiento[i][j] = true;
+				}else {
+					movimiento[i][j] = false;
+				}		
+			}	
 		}
-/*
-		if (y == 2) {
-			y[1] = y+2;
-			x[1] = x;
 			
-			if (movimiento(x[1],y[1]) == "  ") {
-				System.out.println("Movimientos Posibles: " +x[1]+" "+y[1]);
+		for (int j = 0; j < 8; j--) {
+			int contX = x+j;
+			int contY = y+j;
+			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
+				movimiento[contX][contY] = false;
 			}
 		}
 		
-		y[2] = y+1;
-		x[2] = x;
-		
-		if (movimiento(x[2],y[2]) == "  ") {
-			System.out.println("Movimientos Posibles: " +x[2]+" "+y[2]);	
+		for (int j = 0; j < 8; j++) {
+			int contX = x+j;
+			int contY = y+j;
+			if ((contX < 7 || contX > 0) && (contY > 7 || contY < 0 )) {
+				movimiento[contX][contY] = false;
+			}
 		}
-
-	}
-	*/
+		
+		for (int j = 0; j < 8; j--) {
+			int contX = x+j;
+			int contY = y+j;
+			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
+				movimiento[contX][contY] = true;
+			}
+		}
+		
+		for (int j = 0; j < 8; j++) {
+			int contX = x+j;
+			int contY = y+j;
+			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
+				movimiento[contX][contY] = false;
+			}
+		}
+		
+		for (int j = 0; j < 8; j++) {
+			int contX = x+j;
+			int contY = y+j;
+			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
+				movimiento[contX][contY] = true;
+			}
+		}
+		
+		for (int j = 0; j < 8; j--) {
+			int contX = x+j;
+			int contY = y+j;
+			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
+				movimiento[contX][contY] = false;
+			}
+		}
+		return movimiento;
 	}
 }
