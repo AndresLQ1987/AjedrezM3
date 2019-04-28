@@ -37,9 +37,11 @@ public class Main {
 			int[] newPos = preguntaPos("Introduce la posicion de movimiento o otra pieza(ej: 1 3): ");
 			if (movimientoOPieza(newPos, piezaMovs)) {
 				tablero.moverPieza(initPos[0], initPos[1], newPos[0], newPos[1]);
+				tablero.dibujaTablero();
 			}else {
-				tablero.pregMovimientos(newPos[0], newPos[1]);
+				piezaMovs = tablero.pregMovimientos(newPos[0], newPos[1]);
 				initPos = newPos;
+				tablero.dibujaTablero(piezaMovs);
 			}
 		}
 	}
