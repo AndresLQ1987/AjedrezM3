@@ -50,7 +50,7 @@ public class Peon extends Piezas {
 		
 		for (int j = 0; j < 8; j++) {
 			int contX = x-j;
-			int contY = y-j;
+			int contY = y+j;
 			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
 				movimiento[contX][contY] = true;
 			}
@@ -58,7 +58,7 @@ public class Peon extends Piezas {
 		
 		for (int j = 0; j < 8; j++) {
 			int contX = x+j;
-			int contY = y+j;
+			int contY = y-j;
 			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
 				movimiento[contX][contY] = false;
 			}
