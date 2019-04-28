@@ -11,7 +11,7 @@ o inferiors (negres).
 i augmentar fila en una. 
 • Per les negres: disminuir columna i fila en una, augmentar columna en una 
 i disminuir fila en una. 
- */
+*/
 public class Peon extends Piezas {
 	
 	public Peon (int x, int y, String color, String nombre) {
@@ -22,8 +22,8 @@ public class Peon extends Piezas {
 	public boolean[][] movimiento(int x, int y, String color) {
 		boolean[][] movimiento = new boolean[8][8];
 
-		for(int i = 0; i < 8; i++) {
-			for(int j = 0; j < 8; j++) {
+		for(int i = 0; i < 8; i= i - 2) {
+			for(int j = 0; j < 8; i = j + 2) {
 				if (j == x || i == y) {
 					movimiento[i][j] = true;
 				}else {
