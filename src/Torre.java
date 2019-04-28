@@ -1,29 +1,32 @@
+/*
+Class que cae de piezas.
+Incluye bucle de verificación de posiciones para poder enseñar posibles movimientos.
+
+ Mensión honorifica al bucle de la pieza "reina", la cual cogi, por ser mas eficiente
+ dado que en un principio quería hacer una cadena de comprobación basada en IF's.
+ */
 public class Torre extends Piezas {
+    /*
+    Se crea una matriz, la cual recibira 2 enteros y un string especificando el color.
+    Finalmente este retornara la comprobación en forma de true/false de la posición
+    que se haya metido al comenzamiento.
+     */
+    public boolean[][] movimiento(int x, int y) {
+        boolean[][] movimiento = new boolean[8][8]; //Se crea una matriz para
 
-    public torre(int x, int y, String color, String nombre) {
-        super(x, y, color, nombre);
-    }
+        for(int i=0; i=8; i=i+1) {
+            for(int j=0; j=8; j=j+1) {
+                if ((j == x) || (i == y)) {
+                    movimiento[i][j] = true;
 
-    public void Movimiento(int movimiento_desdeX, int movimiento_desdeY) {
+                }else {
+                    movimiento[i][j] = false;
 
-        int desdeX = movimiento_desdeX;
-        int desdeY = movimiento_desdeY;
-    }
+                }
 
-    for(int i=0; i<8; i++) {
-        for(int j=0; j<8; j++) {
-            if (j == x && i == y) {
-                movimiento[i][j] = true;
-            }else {
-                movimiento[i][j] = false;
             }
         }
-    }
-    String ruta;
-
-
-
-    //continuar desde aqui.
+        return movimiento;
     }
 }
 

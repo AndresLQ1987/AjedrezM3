@@ -1,3 +1,4 @@
+/*
 public class Caballo extends Piezas {
 
     public caballo(int x, int y, String color, String nombre) {
@@ -15,7 +16,6 @@ public class Caballo extends Piezas {
         }
     }
 
-    String ruta;
 
     public void movimiento(){
         if(movimiento=arriba_derecha){
@@ -54,3 +54,4 @@ public class Caballo extends Piezas {
         //continuar desde aqui.
     }
 }
+*/
