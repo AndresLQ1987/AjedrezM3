@@ -1,16 +1,14 @@
 /**
- * Clase: Rey
+ * Clase Rey del tablero extiende de piezas y define sus movimientos.
  * 
- * @author andres
  * @version 1.0
- * @date 
- *
- * Pieza Rey del tablero extiende de piezas y define sus movimientos.
+ * @author andres
+ * @date 28/04/2019
  */
 public class Rey extends Piezas {
 	
 	/**
-	 * Constructor de clase Rey
+	 * Constructor de clase Rey que le pasa a la clase padre la poscion, el color y el nombre.
 	 * 
 	 * @param x : parametro que indica la posicion x de la pieza Rey
 	 * @param y : parametro que indica la posicion y de la pieza Rey
@@ -36,41 +34,41 @@ public class Rey extends Piezas {
 		   boolean movimientos[][]=new boolean[8][8];
 		   
 		   // movimiento derecha
-		   if(x+1 < 8) {
-			   movimientos[x+1][y] = true;
+		   if (x + 1 < 8) {
+			   movimientos[x + 1][y] = true;
 		   }
 		   // movimiento izquierda
-		   if(x-1 > 0) {
-			   movimientos[x-1][y] = true;
+		   if (x - 1 > 0) {
+			   movimientos[x - 1][y] = true;
 		   }
 		   // movimiento abajo
-		   if(y+1 < 8) {
-			   movimientos[x][y+1] = true;
+		   if (y + 1 < 8) {
+			   movimientos[x][y + 1] = true;
 		   }
 		   // movimiento arriba
-		   if(y-1 > 0) {
-			   movimientos[x][y-1] = true;
+		   if (y - 1 > 0) {
+			   movimientos[x][y - 1] = true;
 		   }
 		   // movimiento diagonal abajo derecha
-		   if(x+1 < 8 && y+1 < 8) {
-			   movimientos[x+1][y+1] = true;
+		   if (x + 1 < 8 && y + 1 < 8) {
+			   movimientos[x + 1][y + 1] = true;
 		   }
 		   // movimiento diagonal arriba izquierda
-		   if(x-1 > 0 && y-1 > 0) {
-			   movimientos[x-1][y-1] = true;
+		   if (x - 1 > 0 && y - 1 > 0) {
+			   movimientos[x - 1][y - 1] = true;
 		   }
 		   // movimiento diagonal arriba derecha
-		   if(x+1 < 8 && y-1 > 0) {
-			   movimientos[x+1][y-1] = true;
+		   if (x + 1 < 8 && y - 1 > 0) {
+			   movimientos[x + 1][y - 1] = true;
 		   }
 		   // movimiento diagonal abajo izquierda
-		   if(x-1 > 0 && y+1 < 8) {
-			   movimientos[x+1][y+1] = true;
+		   if (x - 1 > 0 && y + 1 < 8) {
+			   movimientos[x + 1][y + 1] = true;
 		   }
 		   // bucle que rellena la matriz los espacios que no son true
-		   for ( int i = 0 ;i < 8 ; i++ ) {
-			   for ( int j = 0 ; j < 8 ; j++) {
-				   if(movimientos[i][j] != true) {
+		   for (int i = 0 ;i < 8 ; i++) {
+			   for (int j = 0 ; j < 8 ; j++) {
+				   if (movimientos[i][j] != true) {
 					   movimientos[i][j] = false;
 				   }
 			   }
