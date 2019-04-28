@@ -24,7 +24,7 @@ public class Alfil extends Piezas {
 			int contX = x + j;
 			int contY = y + j;
 			if(contY <= 7 && contX <= 7) {
-				movimiento[contX][contY] = false;
+				movimiento[contX][contY] = true;
 			}
 		}
 
@@ -40,7 +40,7 @@ public class Alfil extends Piezas {
 			int contX = x - j;
 			int contY = y + j;
 			if(contX >= 0  && contY <= 7) {
-				movimiento[contX][contY] = false;
+				movimiento[contX][contY] = true;
 			}
 		}
 
@@ -48,7 +48,7 @@ public class Alfil extends Piezas {
 			int contX = x + j;
 			int contY = y - j;
 			if(contX <= 7 && contY >= 0) {
-				movimiento[contX][contY] = false;
+				movimiento[contX][contY] = true;
 			}
 		}
 

@@ -49,9 +49,9 @@ public class Tablero {
 					} else if ((x == 2) || (x == 5)) { 	
 						// coloca los alfiles
 						if (y == 0) {
-							tablero[x][y] = new Piezas(x, y, "N", "A");
+							tablero[x][y] = new Alfil(x, y, "N", "A");
 						} else {
-							tablero[x][y] = new Piezas(x, y, "B", "A");
+							tablero[x][y] = new Alfil(x, y, "B", "A");
 						}
 					} else if (x == 3) { 				
 						// coloca la dama (o Reina)
