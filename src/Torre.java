@@ -17,10 +17,11 @@ public class Torre extends Piezas {
     Finalmente este retornara la comprobación en forma de true/false de la posición
     que se haya metido al comenzamiento.
      */
-    public boolean[][] movimiento(int x, int y) {
+    @Override
+    public boolean[][] movimiento(int x, int y,String color) {
         boolean[][] movimiento = new boolean[8][8]; //Se crea una matriz para la posición.
 
-        for(int i=0; i<8; i=i+1) {
+        for(int i=0; i<8; i++) {
             for(int j=0; j<8; j++) {
                 if ((i == x) || (j == y)) {
                     movimiento[i][j] = true; //Verificación para determinar si el movimiento es correcto.
