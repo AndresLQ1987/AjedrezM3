@@ -13,15 +13,16 @@ i augmentar fila en una.
 i disminuir fila en una. 
 */
 public class Peon extends Piezas {
-	
+
 	public Peon (int x, int y, String color, String nombre) {
 		super(x, y, color, nombre);
 	}
-	
+
 	@Override
 	public boolean[][] movimiento(int x, int y, String color) {
 		boolean[][] movimiento = new boolean[8][8];
-
+		int yinicial = y;
+		int xinicial = x;
 		for (int i = 0; i < 8; i= i - 2) {
 			for(int j = 0; j < 8; i = j + 2) {
 				if (j == x || i == y) {
@@ -31,50 +32,39 @@ public class Peon extends Piezas {
 				}		
 			}	
 		}
-			
-		for (int j = 0; j < 8; j++) {
-			int contX = x-j;
-			int contY = y-j;
+
+		yinicial--;
+		int contX = x;
+		int contY = y;
+		if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
+			movimiento[contX][contY] = true;
+		}
+
+
+		xinicial++;
+		if ((contX < 7 || contX > 0) && (contY > 7 || contY < 0 )) {
+			movimiento[contX][contY] = false;
+		}
+
+		xinicial = x;
+		xinicial--;
+		if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
+			movimiento[contX][contY] = true;
+		}
+		else {
+			yinicial++;
 			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
 				movimiento[contX][contY] = false;
 			}
-		}
-		
-		for (int j = 0; j < 8; j++) {
-			int contX = x+j;
-			int contY = y+j;
-			if ((contX < 7 || contX > 0) && (contY > 7 || contY < 0 )) {
-				movimiento[contX][contY] = false;
-			}
-		}
-		
-		for (int j = 0; j < 8; j++) {
-			int contX = x-j;
-			int contY = y+j;
+
+			xinicial++;
 			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
 				movimiento[contX][contY] = true;
 			}
-		}
-		
-		for (int j = 0; j < 8; j++) {
-			int contX = x+j;
-			int contY = y-j;
-			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
-				movimiento[contX][contY] = false;
-			}
-		}
-		
-		for (int j = 0; j < 8; j++) {
-			int contX = x+j;
-			int contY = y+j;
-			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
-				movimiento[contX][contY] = true;
-			}
-		}
-		
-		for (int j = 0; j < 8; j++) {
-			int contX = x-j;
-			int contY = y-j;
+
+			xinicial = x;
+			xinicial--;
+
 			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
 				movimiento[contX][contY] = false;
 			}
