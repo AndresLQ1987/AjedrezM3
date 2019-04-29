@@ -63,7 +63,7 @@ public class Rey extends Piezas {
 		   }
 		   // movimiento diagonal abajo izquierda
 		   if (x - 1 > 0 && y + 1 < 8) {
-			   movimientos[x + 1][y + 1] = true;
+			   movimientos[x - 1][y + 1] = true;
 		   }
 		   // bucle que rellena la matriz los espacios que no son true
 		   for (int i = 0 ;i < 8 ; i++) {

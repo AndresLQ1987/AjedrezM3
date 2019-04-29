@@ -14,61 +14,73 @@ i disminuir fila en una.
 */
 public class Peon extends Piezas {
 
-	public Peon (int x, int y, String color, String nombre) {
+	boolean primerMovimiento;
+
+	public Peon(int x, int y, String color, String nombre) {
 		super(x, y, color, nombre);
+		primerMovimiento = true;
 	}
 
 	@Override
 	public boolean[][] movimiento(int x, int y, String color) {
 		boolean[][] movimiento = new boolean[8][8];
-		int yinicial = y;
-		int xinicial = x;
-		for (int i = 0; i < 8; i= i - 2) {
-			for(int j = 0; j < 8; i = j + 2) {
-				if (j == x || i == y) {
-					movimiento[i][j] = true;
-				}else {
-					movimiento[i][j] = false;
-				}		
-			}	
-		}
 
-		yinicial--;
-		int contX = x;
-		int contY = y;
-		if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
-			movimiento[contX][contY] = true;
-		}
-
-
-		xinicial++;
-		if ((contX < 7 || contX > 0) && (contY > 7 || contY < 0 )) {
-			movimiento[contX][contY] = false;
-		}
-
-		xinicial = x;
-		xinicial--;
-		if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
-			movimiento[contX][contY] = true;
-		}
-		else {
-			yinicial++;
-			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
-				movimiento[contX][contY] = false;
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				movimiento[i][j] = false;
 			}
+		}
 
-			xinicial++;
-			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
-				movimiento[contX][contY] = true;
+		if (color == "B") {
+			if (primerMovimiento) {
+				for (int i = 1; i <= 2; i++) {
+					movimiento[x][y - i] = true;
+					if ((x + 1 <= 7 && x + 1 >= 0) && (y - 1 <= 7 && y - 1 >= 0)) {
+						movimiento[x + 1][y - 1] = true;
+					}
+					if ((x - 1 <= 7 && x - 1 >= 0) && (y - 1 <= 7 && y - 1 >= 0)) {
+						movimiento[x - 1][y - 1] = true;
+					}
+				}
+			} else {
+				movimiento[x][y - 1] = true;
+				if ((x + 1 <= 7 && x + 1 >= 0) && (y - 1 <= 7 && y - 1 >= 0)) {
+					movimiento[x + 1][y - 1] = true;
+				}
+				if ((x - 1 <= 7 && x - 1 >= 0) && (y - 1 <= 7 && y - 1 >= 0)) {
+					movimiento[x - 1][y - 1] = true;
+				}
 			}
-
-			xinicial = x;
-			xinicial--;
-
-			if ((contX > 7 || contX < 0) && (contY > 7 || contY < 0 )) {
-				movimiento[contX][contY] = false;
+		} else {
+			if (primerMovimiento) {
+				for (int i = 1; i <= 2; i++) {
+					movimiento[x][y + i] = true;
+					if ((x + 1 <= 7 && x + 1 >= 0) && (y + 1 <= 7 && y + 1 >= 0)) {
+						movimiento[x + 1][y + 1] = true;
+					}
+					if ((x - 1 <= 7 && x - 1 >= 0) && (y + 1 <= 7 && y + 1 >= 0)) {
+						movimiento[x - 1][y + 1] = true;
+					}
+				}
+			} else {
+				movimiento[x][y + 1] = true;
+				if ((x + 1 <= 7 && x + 1 >= 0) && (y + 1 <= 7 && y + 1 >= 0)) {
+					movimiento[x + 1][y + 1] = true;
+				}
+				if ((x - 1 <= 7 && x - 1 >= 0) && (y + 1 <= 7 && y + 1 >= 0)) {
+					movimiento[x - 1][y + 1] = true;
+				}
 			}
 		}
 		return movimiento;
 	}
+
+	public void setPrimerMovimiento(boolean primerMovimiento) {
+		this.primerMovimiento = primerMovimiento;
+	}
+
+	public boolean isPrimerMovimiento() {
+		return primerMovimiento;
+	}
+
 }
