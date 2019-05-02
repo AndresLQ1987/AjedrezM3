@@ -27,32 +27,40 @@ public class Main {
 		Tablero tablero = new Tablero();
 		tablero.dibujaTablero();
 		
-		//pregunta por la pieza a mover para mostrar sus movimientos
-		int[] initPos = preguntaPos("Introduce la posicion de la pieza(ej: 0 0): ");
-		System.out.println();
-		boolean[][] piezaMovs = tablero.pregMovimientos(initPos[0], initPos[1]);
-		tablero.dibujaTablero(piezaMovs);
-		
-		/*
-		 * pregunta por una segunda posicion y destinge si es un movimiento de la
-		 * primera pieza seleccionada o una segunda pieza, si es un movimiento mueve
-		 * la primera pieza
-		 */
-		
-		boolean movimientoHecho = false;
-		while (!movimientoHecho) {
-			int[] newPos = preguntaPos("Introduce la posicion de movimiento o otra pieza(ej: 1 3): ");
-			if (movimientoOPieza(newPos, piezaMovs)) {
-				tablero.moverPieza(initPos[0], initPos[1], newPos[0], newPos[1]);
-				tablero.dibujaTablero();
-				movimientoHecho = true;
-			}else {
-				piezaMovs = tablero.pregMovimientos(newPos[0], newPos[1]);
-				initPos = newPos;
-				tablero.dibujaTablero(piezaMovs);
+		boolean finJuego = false;
+		int contador = 0;
+		while(!finJuego) {
+			//pregunta por la pieza a mover para mostrar sus movimientos
+			int[] initPos = preguntaPos("Introduce la posicion de la pieza(ej: 0 0): ");
+			System.out.println();
+			boolean[][] piezaMovs = tablero.pregMovimientos(initPos[0], initPos[1]);
+			boolean[][] correctMovs = tablero.corregirMovimientos(initPos[0], initPos[1], piezaMovs);
+			tablero.dibujaTablero(correctMovs);
+			
+			/*
+			 * pregunta por una segunda posicion y destinge si es un movimiento de la
+			 * primera pieza seleccionada o una segunda pieza, si es un movimiento mueve
+			 * la primera pieza
+			 */
+			
+			boolean movimientoHecho = false;
+			while (!movimientoHecho) {
+				int[] newPos = preguntaPos("Introduce la posicion de movimiento o otra pieza(ej: 1 3): ");
+				if (movimientoOPieza(newPos, piezaMovs)) {
+					tablero.moverPieza(initPos[0], initPos[1], newPos[0], newPos[1]);
+					tablero.dibujaTablero();
+					movimientoHecho = true;
+					contador++;
+				}else {
+					piezaMovs = tablero.pregMovimientos(newPos[0], newPos[1]);
+					initPos = newPos;
+					tablero.dibujaTablero(piezaMovs);
+				}
+			}
+			if(contador >= 30) {
+				finJuego = false;
 			}
 		}
-		
 	}
 	
 	/**
