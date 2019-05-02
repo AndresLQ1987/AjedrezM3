@@ -125,7 +125,6 @@ public class Tablero {
 	 */
 	public boolean[][] pregMovimientos(int x, int y) {
 		boolean [][] result = tablero[x][y].movimiento(x, y, tablero[x][y].getColor());
-		//boolean [][] correctResult = corregirMovimientos(x, y, result);
 		return result;
 	}
 	
@@ -154,8 +153,8 @@ public class Tablero {
 	 * @param y parametro y de la pieza a revisar
 	 * @param movs los movimientos que puede realizar dicha ficha
 	 */
-	/*private boolean[][] corregirMovimientos(int x, int y, boolean[][] movs) {
-		System.out.println("corrigiendo");
+	public boolean[][] corregirMovimientos(int x, int y, boolean[][] movs) {
+		boolean[][] correctMovs = movs;
 		switch (tablero[x][y].getNombre()) {
 		case "P":
 			
@@ -170,7 +169,10 @@ public class Tablero {
 			
 			break;
 		case "D":
-			movs = corregirArriba(x, y, movs);
+			correctMovs = corregirArriba(x, y, correctMovs);
+			correctMovs = corregirAbajo(x, y, correctMovs);
+			correctMovs = corregirDerecha(x, y, correctMovs);
+			correctMovs = corregirIzquierda(x, y, correctMovs);
 			break;
 		case "R":
 			
@@ -179,8 +181,8 @@ public class Tablero {
 			break;
 		}
 		
-		return movs;
-	}*/
+		return correctMovs;
+	}
 	
 	/**
 	 * Metodo corregirArriba
@@ -190,45 +192,163 @@ public class Tablero {
 	 * @param y valor x de la pieza a revisar
 	 * @param movs la lista de movimientos posibles
 	 */
-	/*private boolean[][] corregirArriba(int x, int y, boolean[][] movs) {
-		System.out.println("corrigiendo arriba");
+	private boolean[][] corregirArriba(int x, int y, boolean[][] movs) {
 		boolean colisionMismoColor = false;
 		boolean colisionOtroColor = false;
 		int contador = 0;
-		for (int i = 0; i < 8; i++) {
-			if (x+i < 8) {
-				if (tablero[x+i][y].getColor() == tablero[x][y].getColor()) {
+		for (int i = 1; i < 8; i++) {
+			if (y-i >= 0) {
+				if (tablero[x][y-i].getColor().equals(tablero[x][y].getColor())) {
 					colisionMismoColor = true;
-					movs[x+i][y] = false;
-				} else if ((tablero[x+i][y].getColor() == "B") && (tablero[x][y].getColor() == "N")) {
-					if (!colisionMismoColor) {
-						if (!colisionOtroColor) {
-							contador += 1;
-						} else {
-							movs[x+i][y] = false;
-						}
+					movs[x][y-i] = false;
+				} else if (tablero[x][y-i].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
+					if (contador == 0) {
+						contador++;
+						colisionOtroColor = true;
+					} else {
+						movs[x][y-i] = false;
 					}
-				} else if ((tablero[x+i][y].getColor() == "N") && (tablero[x][y].getColor() == "B")) {
-					if (!colisionMismoColor) {
-						if (!colisionOtroColor) {
-							contador += 1;
-						} else {
-							movs[x+i][y] = false;
-						}
-					}
-				} else {
-					if (colisionMismoColor || colisionOtroColor) {
-						movs[x+i][y] = false;
+				} else if (tablero[x][y-i].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
+					if (contador == 0) {
+						contador++;
+					} else {
+						movs[x][y-i] = false;
 					}
 				}
-				if (colisionMismoColor) {
-					movs[x+i][y] = false;
+				if (colisionMismoColor || colisionOtroColor) {
+					movs[x][y-i] = false;
 				}
-				if (contador >= 1) {
+				if (contador == 1) {
 					colisionOtroColor = true;
 				}
 			}
 		}
 		return movs;
-	}*/
+	}
+	
+	/**
+	 * Metodo corregirAbajo
+	 * comprueva las colisiones en vertical hacia abajo
+	 * 
+	 * @param x valor x de la pieza a revisar
+	 * @param y valor x de la pieza a revisar
+	 * @param movs la lista de movimientos posibles
+	 */
+	private boolean[][] corregirAbajo(int x, int y, boolean[][] movs) {
+		boolean colisionMismoColor = false;
+		boolean colisionOtroColor = false;
+		int contador = 0;
+		for (int i = 1; i < 8; i++) {
+			if (y+i < 8) {
+				if (tablero[x][y+i].getColor().equals(tablero[x][y].getColor())) {
+					colisionMismoColor = true;
+					movs[x][y+i] = false;
+				} else if (tablero[x][y-i].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
+					if (contador == 0) {
+						contador++;
+						colisionOtroColor = true;
+					} else {
+						movs[x][y+i] = false;
+					}
+				} else if (tablero[x][y+i].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
+					if (contador == 0) {
+						contador++;
+					} else {
+						movs[x][y+i] = false;
+					}
+				}
+				if (colisionMismoColor || colisionOtroColor) {
+					movs[x][y+i] = false;
+				}
+				if (contador == 1) {
+					colisionOtroColor = true;
+				}
+			}
+		}
+		return movs;
+	}
+	
+	/**
+	 * Metodo corregirDerecha
+	 * comprueva las colisiones en horizontal hacia la derecha
+	 * 
+	 * @param x valor x de la pieza a revisar
+	 * @param y valor x de la pieza a revisar
+	 * @param movs la lista de movimientos posibles
+	 */
+	private boolean[][] corregirDerecha(int x, int y, boolean[][] movs) {
+		boolean colisionMismoColor = false;
+		boolean colisionOtroColor = false;
+		int contador = 0;
+		for (int i = 1; i < 8; i++) {
+			if (x+i < 8) {
+				if (tablero[x+i][y].getColor().equals(tablero[x][y].getColor())) {
+					colisionMismoColor = true;
+					movs[x+i][y] = false;
+				} else if (tablero[x+i][y].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
+					if (contador == 0) {
+						contador++;
+						colisionOtroColor = true;
+					} else {
+						movs[x+i][y] = false;
+					}
+				} else if (tablero[x+i][y].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
+					if (contador == 0) {
+						contador++;
+					} else {
+						movs[x+i][y] = false;
+					}
+				}
+				if (colisionMismoColor || colisionOtroColor) {
+					movs[x+i][y] = false;
+				}
+				if (contador == 1) {
+					colisionOtroColor = true;
+				}
+			}
+		}
+		return movs;
+	}
+	
+	/**
+	 * Metodo corregirIzquierda
+	 * comprueva las colisiones en horizontal hacia la izquierda
+	 * 
+	 * @param x valor x de la pieza a revisar
+	 * @param y valor x de la pieza a revisar
+	 * @param movs la lista de movimientos posibles
+	 */
+	private boolean[][] corregirIzquierda(int x, int y, boolean[][] movs) {
+		boolean colisionMismoColor = false;
+		boolean colisionOtroColor = false;
+		int contador = 0;
+		for (int i = 1; i < 8; i++) {
+			if (x-i >= 0) {
+				if (tablero[x-i][y].getColor().equals(tablero[x][y].getColor())) {
+					colisionMismoColor = true;
+					movs[x-i][y] = false;
+				} else if (tablero[x-i][y].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
+					if (contador == 0) {
+						contador++;
+						colisionOtroColor = true;
+					} else {
+						movs[x-i][y] = false;
+					}
+				} else if (tablero[x+i][y].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
+					if (contador == 0) {
+						contador++;
+					} else {
+						movs[x-i][y] = false;
+					}
+				}
+				if (colisionMismoColor || colisionOtroColor) {
+					movs[x-i][y] = false;
+				}
+				if (contador == 1) {
+					colisionOtroColor = true;
+				}
+			}
+		}
+		return movs;
+	}
 }
