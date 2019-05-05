@@ -14,7 +14,7 @@ i disminuir fila en una.
 */
 
 public class Peon extends Piezas {
-    //Atributo de la clase
+	// Atributo de la clase
 	private boolean primerMovimiento;
 
 	public Peon(int x, int y, String color, String nombre) {
@@ -24,7 +24,7 @@ public class Peon extends Piezas {
 
 	@Override
 	public boolean[][] movimiento(int x, int y, String color) {
-		//Declaramos y creamos el objeto en una línea
+		// Declaramos y creamos el objeto en una línea
 		boolean[][] movimiento = new boolean[8][8];
 
 		for (int i = 0; i < 8; i++) {
@@ -77,7 +77,7 @@ public class Peon extends Piezas {
 		return movimiento;
 	}
 
-    //Método para establecer el Primer Movimiento
+	// Método para establecer el Primer Movimiento
 	public void setPrimerMovimiento(boolean primerMovimiento) {
 		this.primerMovimiento = primerMovimiento;
 	}

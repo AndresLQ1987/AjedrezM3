@@ -580,12 +580,12 @@ public class Tablero {
 						movs[x][y + i] = false;
 					}
 				}
-				if (x+1 < 8) {
+				if (x + 1 < 8) {
 					if (!tablero[x + 1][y + 1].getColor().equals("B")) {
 						movs[x + 1][y + 1] = false;
 					}
 				}
-				if (x-1 >= 0) {
+				if (x - 1 >= 0) {
 					if (!tablero[x - 1][y + 1].getColor().equals("B")) {
 						movs[x - 1][y + 1] = false;
 					}
@@ -594,12 +594,12 @@ public class Tablero {
 				if (tablero[x][y + 1].getColor().equals("N") || tablero[x][y + 1].getColor().equals("B")) {
 					movs[x][y + 1] = false;
 				}
-				if (x+1 < 8) {
+				if (x + 1 < 8) {
 					if (!tablero[x + 1][y + 1].getColor().equals("B")) {
 						movs[x + 1][y + 1] = false;
 					}
 				}
-				if (x-1 >= 0) {
+				if (x - 1 >= 0) {
 					if (!tablero[x - 1][y + 1].getColor().equals("B")) {
 						movs[x - 1][y + 1] = false;
 					}
@@ -617,12 +617,12 @@ public class Tablero {
 						movs[x][y - i] = false;
 					}
 				}
-				if (x+1 < 8) {
+				if (x + 1 < 8) {
 					if (!tablero[x + 1][y - 1].getColor().equals("N")) {
 						movs[x + 1][y - 1] = false;
 					}
 				}
-				if (x-1 >= 0) {
+				if (x - 1 >= 0) {
 					if (!tablero[x - 1][y - 1].getColor().equals("N")) {
 						movs[x - 1][y - 1] = false;
 					}
@@ -631,12 +631,12 @@ public class Tablero {
 				if (tablero[x][y - 1].getColor().equals("N") || tablero[x][y - 1].getColor().equals("B")) {
 					movs[x][y - 1] = false;
 				}
-				if (x+1 < 8) {
+				if (x + 1 < 8) {
 					if (!tablero[x + 1][y - 1].getColor().equals("N")) {
 						movs[x + 1][y - 1] = false;
 					}
 				}
-				if (x-1 >= 0) {
+				if (x - 1 >= 0) {
 					if (!tablero[x - 1][y - 1].getColor().equals("N")) {
 						movs[x - 1][y - 1] = false;
 					}

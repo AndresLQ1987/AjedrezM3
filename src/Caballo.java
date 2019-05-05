@@ -67,5 +67,3 @@ public class Caballo extends Piezas {
 		return movimiento;
 	}
 }
-
-

@@ -7,42 +7,42 @@ import java.io.InputStreamReader;
  * @version 1.0
  * @author andres,christian,jose,catriel
  * 
- * Programa principal
+ *         Programa principal
  */
 public class Main {
-	
+
 	/**
 	 * atributo del main para poder leer por teclado desde cualquier metodo del main
 	 */
 	public static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	
+
 	/**
 	 * Metodo principal del programa
 	 * 
 	 * @param args valores recogidos al llamar al programa.
 	 */
 	public static void main(String[] args) {
-		
-		//crea el tablero y lo muestra por pantalla
+
+		// crea el tablero y lo muestra por pantalla
 		Tablero tablero = new Tablero();
 		tablero.dibujaTablero();
-		
-		//bucle donde se desarrolla la partida
+
+		// bucle donde se desarrolla la partida
 		boolean finJuego = false;
 		int contador = 0;
-		while(!finJuego) {
-			//pregunta por la pieza a mover para mostrar sus movimientos
+		while (!finJuego) {
+			// pregunta por la pieza a mover para mostrar sus movimientos
 			int[] initPos = preguntaPos("Introduce la posicion de la pieza(ej: 0 0): ");
 			System.out.println();
 			boolean[][] piezaMovs = tablero.pregMovimientos(initPos[0], initPos[1]);
 			tablero.dibujaTablero(piezaMovs);
-			
+
 			/*
 			 * pregunta por una segunda posicion y destinge si es un movimiento de la
-			 * primera pieza seleccionada o una segunda pieza, si es un movimiento mueve
-			 * la primera pieza
+			 * primera pieza seleccionada o una segunda pieza, si es un movimiento mueve la
+			 * primera pieza
 			 */
-			
+
 			boolean movimientoHecho = false;
 			while (!movimientoHecho) {
 				int[] newPos = preguntaPos("Introduce la posicion de movimiento o otra pieza(ej: 1 3): ");
@@ -51,22 +51,22 @@ public class Main {
 					tablero.dibujaTablero();
 					movimientoHecho = true;
 					contador++;
-				}else {
+				} else {
 					piezaMovs = tablero.pregMovimientos(newPos[0], newPos[1]);
 					initPos = newPos;
 					tablero.dibujaTablero(piezaMovs);
 				}
 			}
-			if(contador >= 30) {
+			if (contador >= 30) {
 				finJuego = false;
 			}
 		}
 	}
-	
+
 	/**
-	 * Metodo preguntaPos
-	 * es un metodo que pregunta la posicion dentro del tablero ademas de encargarse de las comprobaciones
-	 * pertinentes para su correcto funcionamiento
+	 * Metodo preguntaPos es un metodo que pregunta la posicion dentro del tablero
+	 * ademas de encargarse de las comprobaciones pertinentes para su correcto
+	 * funcionamiento
 	 * 
 	 * @param frase sirve para mostrar distintos mensajes al usuario
 	 * @return int[] un array con la posicion en el 0 esta la X y en el 1 esta la Y
@@ -84,39 +84,39 @@ public class Main {
 					String[] coordenadas = pos.split(" ");
 					try {
 						posicion[0] = Integer.parseInt(coordenadas[0]);
-						if(posicion[0] >= 0 && posicion[0] <= 7) {
+						if (posicion[0] >= 0 && posicion[0] <= 7) {
 							wellX = true;
-						}else {
+						} else {
 							System.out.println("Primer numero debe ser entre 0 y 7.");
 						}
 						int invertedY = Integer.parseInt(coordenadas[1]);
 						posicion[1] = 7 - invertedY;
-						if(posicion[1] >= 0 && posicion[1] <= 7) {
+						if (posicion[1] >= 0 && posicion[1] <= 7) {
 							wellY = true;
-						}else {
+						} else {
 							System.out.println("Segundo numero debe ser entre 0 y 7.");
 						}
-						if(wellX && wellY) {
+						if (wellX && wellY) {
 							wellPos = true;
 						}
-					}catch (Exception e) {
+					} catch (Exception e) {
 						System.out.println("Introduce solo numeros.");
 					}
-				}catch (Exception e){
+				} catch (Exception e) {
 					System.out.println("Por favor introduzca la posicion como en el ejemplo.");
 				}
-			}catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("Error, posicion en Blanco.");
 			}
 		}
 		return posicion;
 	}
-	
+
 	/**
-	 * Metodo movimientoOPieza
-	 * es un metodo que distinge si la posicion pasada es un movimiento o una pieza
+	 * Metodo movimientoOPieza es un metodo que distinge si la posicion pasada es un
+	 * movimiento o una pieza
 	 * 
-	 * @param pos la posicion pasada
+	 * @param pos  la posicion pasada
 	 * @param movs los movimientos correctos
 	 * @return posMovs true si es un movimiento false si es una pieza
 	 */
