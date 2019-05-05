@@ -15,7 +15,7 @@ i disminuir fila en una.
 
 public class Peon extends Piezas {
     //Atributo de la clase
-	boolean primerMovimiento;
+	private boolean primerMovimiento;
 
 	public Peon(int x, int y, String color, String nombre) {
 		super(x, y, color, nombre);

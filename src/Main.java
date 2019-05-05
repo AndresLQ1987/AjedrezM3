@@ -27,6 +27,7 @@ public class Main {
 		Tablero tablero = new Tablero();
 		tablero.dibujaTablero();
 		
+		//bucle donde se desarrolla la partida
 		boolean finJuego = false;
 		int contador = 0;
 		while(!finJuego) {
@@ -34,8 +35,7 @@ public class Main {
 			int[] initPos = preguntaPos("Introduce la posicion de la pieza(ej: 0 0): ");
 			System.out.println();
 			boolean[][] piezaMovs = tablero.pregMovimientos(initPos[0], initPos[1]);
-			boolean[][] correctMovs = tablero.corregirMovimientos(initPos[0], initPos[1], piezaMovs);
-			tablero.dibujaTablero(correctMovs);
+			tablero.dibujaTablero(piezaMovs);
 			
 			/*
 			 * pregunta por una segunda posicion y destinge si es un movimiento de la
