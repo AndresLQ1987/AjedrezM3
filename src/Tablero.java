@@ -151,6 +151,29 @@ public class Tablero {
 	}
 
 	/**
+	 * Metodo getColor devuelve el color de la casilla pasa por X e Y
+	 * 
+	 * @param x posicion x de la casilla a preguntar
+	 * @param y posicion y de la casilla a preguntar
+	 * @return String el color de la casilla seleccionada
+	 */
+	public String getColor(int x, int y) {
+		return tablero[x][y].getColor();
+	}
+
+	/**
+	 * Metodo getNombre devuelve el nombre de la pieza de la que esta en la casilla
+	 * pasada por X e Y
+	 * 
+	 * @param x posicion x de la casilla
+	 * @param y posicion y de la casilla
+	 * @return String el nombre de la pieza en la casilla
+	 */
+	public String getNombre(int x, int y) {
+		return tablero[x][y].getNombre();
+	}
+
+	/**
 	 * Metodo corregirMovimientos pasado los movimientos de la pieza revisa
 	 * colisiones con piezas aliadas y/o enemigas para quitar los movimientos que no
 	 * son posibles dentro de los que puede realizar la pieza
@@ -224,15 +247,10 @@ public class Tablero {
 				} else if (tablero[x][y - i].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
 					if (contador == 0) {
 						contador++;
-						colisionOtroColor = true;
-					} else {
-						movs[x][y - i] = false;
 					}
 				} else if (tablero[x][y - i].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
 					if (contador == 0) {
 						contador++;
-					} else {
-						movs[x][y - i] = false;
 					}
 				}
 				if (colisionMismoColor || colisionOtroColor) {
@@ -265,15 +283,10 @@ public class Tablero {
 				} else if (tablero[x][y + i].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
 					if (contador == 0) {
 						contador++;
-						colisionOtroColor = true;
-					} else {
-						movs[x][y + i] = false;
 					}
 				} else if (tablero[x][y + i].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
 					if (contador == 0) {
 						contador++;
-					} else {
-						movs[x][y + i] = false;
 					}
 				}
 				if (colisionMismoColor || colisionOtroColor) {
@@ -307,15 +320,10 @@ public class Tablero {
 				} else if (tablero[x + i][y].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
 					if (contador == 0) {
 						contador++;
-						colisionOtroColor = true;
-					} else {
-						movs[x + i][y] = false;
 					}
 				} else if (tablero[x + i][y].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
 					if (contador == 0) {
 						contador++;
-					} else {
-						movs[x + i][y] = false;
 					}
 				}
 				if (colisionMismoColor || colisionOtroColor) {
@@ -349,15 +357,10 @@ public class Tablero {
 				} else if (tablero[x - i][y].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
 					if (contador == 0) {
 						contador++;
-						colisionOtroColor = true;
-					} else {
-						movs[x - i][y] = false;
 					}
 				} else if (tablero[x - i][y].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
 					if (contador == 0) {
 						contador++;
-					} else {
-						movs[x - i][y] = false;
 					}
 				}
 				if (colisionMismoColor || colisionOtroColor) {
@@ -391,15 +394,10 @@ public class Tablero {
 				} else if (tablero[x + i][y - i].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
 					if (contador == 0) {
 						contador++;
-						colisionOtroColor = true;
-					} else {
-						movs[x + i][y - i] = false;
 					}
 				} else if (tablero[x + i][y - i].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
 					if (contador == 0) {
 						contador++;
-					} else {
-						movs[x + i][y - i] = false;
 					}
 				}
 				if (colisionMismoColor || colisionOtroColor) {
@@ -433,15 +431,10 @@ public class Tablero {
 				} else if (tablero[x - i][y - i].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
 					if (contador == 0) {
 						contador++;
-						colisionOtroColor = true;
-					} else {
-						movs[x - i][y - i] = false;
 					}
 				} else if (tablero[x - i][y - i].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
 					if (contador == 0) {
 						contador++;
-					} else {
-						movs[x - i][y - i] = false;
 					}
 				}
 				if (colisionMismoColor || colisionOtroColor) {
@@ -475,15 +468,10 @@ public class Tablero {
 				} else if (tablero[x + i][y + i].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
 					if (contador == 0) {
 						contador++;
-						colisionOtroColor = true;
-					} else {
-						movs[x + i][y + i] = false;
 					}
 				} else if (tablero[x + i][y + i].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
 					if (contador == 0) {
 						contador++;
-					} else {
-						movs[x + i][y + i] = false;
 					}
 				}
 				if (colisionMismoColor || colisionOtroColor) {
@@ -517,15 +505,10 @@ public class Tablero {
 				} else if (tablero[x - i][y + i].getColor().equals("B") && tablero[x][y].getColor().equals("N")) {
 					if (contador == 0) {
 						contador++;
-						colisionOtroColor = true;
-					} else {
-						movs[x - i][y + i] = false;
 					}
 				} else if (tablero[x - i][y + i].getColor().equals("N") && tablero[x][y].getColor().equals("B")) {
 					if (contador == 0) {
 						contador++;
-					} else {
-						movs[x - i][y + i] = false;
 					}
 				}
 				if (colisionMismoColor || colisionOtroColor) {
